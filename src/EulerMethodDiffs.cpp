@@ -1,5 +1,4 @@
 #include "EulerMethodDiffs.hpp"
-#include <iostream>
 
 static const double EPSILON = 0.0001f;
 /*
