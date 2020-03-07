@@ -16,12 +16,12 @@ double ModifiedEulerMethod::modifiedEulersFunction()
     {
         y1 = nextY();
         x1 = getX() + getStep();
-        y1c = getY() + getStep() * (function() + function(x1,y1))/2;
+        y1c = getY() + getStep() * (function( getX(),getY() ) + function(x1,y1))/2;
         std::cout << "x: " << getX() << std::endl;
         std::cout << "y: " << getY() << std::endl;
         std::cout << "x1: " << x1 << std::endl;
         std::cout << "y1: " << y1 << std::endl;
-        std::cout << "function: " << std::setprecision(10) << function() << std::endl;
+        std::cout << "function: " << std::setprecision(10) << function( getX(),getY() ) << std::endl;
         std::cout << "function(x1,y1): " << std::setprecision(10) << function(x1,y1) << std::endl;
         std::cout << "yc: " << std::setprecision(10) << y1c  << std::endl;
         setY(y1c);

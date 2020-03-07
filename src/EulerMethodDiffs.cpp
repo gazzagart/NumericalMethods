@@ -1,6 +1,5 @@
 #include "EulerMethodDiffs.hpp"
 
-static const double EPSILON = 0.0001f;
 /*
  * Function to call simple Euler's method on a function until end value has been reached.
  * @return double: The (estimate) answer to the function at an x value
