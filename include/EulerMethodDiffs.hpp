@@ -5,6 +5,12 @@
 #include <iostream>
 
 /*
+* This states that the parameter functionuser will be a pointer to a function which has a double return type and which
+* takes a two doubles as parameters. We will store the function that we want to compute here.
+*/
+typedef double (*functionuser)(double,double);
+
+/*
  * Euler's method for solving simple differential equations.
 */
 class EulerMethodDiffs {
@@ -17,15 +23,15 @@ public:
  * @param double xVal: The starting x value.
  * @param double yVal: The y value at the starting xVal.
  * @param double xEnd: The stop value for the step size.
+ * @param function user diff: The two variable differential exquation defined as func(double x,double y)
 */
-    EulerMethodDiffs(double step, double xVal, double yVal, double xEnd)
-    : h(step), x(xVal), y(yVal), endVal(xEnd) {}
+    EulerMethodDiffs(functionuser diff, double step, double xVal, double yVal, double xEnd)
+    :func(diff), h(step), x(xVal), y(yVal), endVal(xEnd) {}
 /*
 * Constructor to solve simple intial value differential equation, using simple Euler method.
 * This method calls another constructor with all values initilised.
 * @brief Simlpe Euler method solving differential function
 */
-    EulerMethodDiffs(): EulerMethodDiffs(0.2, 0, 1.0, 1.0){ std::cout << std::setprecision(10) << EulersFunction() << std::endl;}
     inline double getY() const {return y;}
     inline double getX() const {return x;}
     inline double getEndVal() const {return endVal;}
@@ -33,12 +39,11 @@ public:
     inline void setY(double mY) {y = mY;}
     inline void setX(double mX) {x = mX;}
     virtual void computeFunction();
-    /// The differential function
-    inline double function() {return -x * pow(y,2);};
-    inline double function(double nX, double nY) {return -nX * pow(nY,2);};
+    inline double function(double nX, double nY) const {return func(nX,nY);};
     /// returns the next y value implementing Euler's method
-    inline double nextY() {return y + h*(function());};
+    inline double nextY() const {return y + h*(function(x,y));};
 private:
+    functionuser func;
     double EulersFunction();
     double h, x, y, endVal;
 };
