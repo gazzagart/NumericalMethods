@@ -26,18 +26,19 @@ public:
 * @brief Simlpe Euler method solving differential function
 */
     EulerMethodDiffs(): EulerMethodDiffs(0.2, 0, 1.0, 1.0){ std::cout << std::setprecision(10) << EulersFunction() << std::endl;}
-    inline void setY(double mY) {y = mY;}
     inline double getY() const {return y;}
-    inline void setX(double mX) {x = mX;}
     inline double getX() const {return x;}
-    void computeFunction();
-
-private:
-    // inline double function() {return -x * pow(y,2);};
+    inline double getEndVal() const {return endVal;}
+    inline double getStep() const {return h;}
+    inline void setY(double mY) {y = mY;}
+    inline void setX(double mX) {x = mX;}
+    virtual void computeFunction();
     /// The differential function
-    inline double function() {return x / y;};
+    inline double function() {return -x * pow(y,2);};
+    inline double function(double nX, double nY) {return -nX * pow(nY,2);};
     /// returns the next y value implementing Euler's method
     inline double nextY() {return y + h*(function());};
+private:
     double EulersFunction();
     double h, x, y, endVal;
 };
