@@ -1,5 +1,7 @@
 #include "EulerMethodDiffs.hpp"
 
+
+EulerMethodDiffs::EulerMethodDiffs(){}
 /*
  * Function to call simple Euler's method on a function until end value has been reached.
  * @return double: The (estimate) answer to the function at an x value
@@ -23,4 +25,23 @@ double EulerMethodDiffs::EulersFunction()
 void EulerMethodDiffs::computeFunction()
 {
   std::cout << std::setprecision(10) << EulersFunction()  << std::endl;
+}
+
+/*
+ * Function to call simple Euler's method on a function until end value has been reached.
+ * @return double: The (estimate) answer to the function at an x value
+*/
+double EulerMethodDiffs::EulersFunctionT()
+{
+  // Works out how many times to run Euler's method.
+  double length = endVal/h;
+  for (int i = 0; i <= length; i++)
+  {
+    std::cout << "x: " << std::setprecision(10) << x  << std::endl;
+    std::cout << "y: " << std::setprecision(10) << y  << std::endl;
+    y = nextYT();
+    t = t + h;
+    std::cout << "y': " << std::setprecision(10) << y  << std::endl;
+  }
+  return y;
 }
