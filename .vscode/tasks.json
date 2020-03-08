@@ -8,8 +8,8 @@
                 "kind": "build",
                 "isDefault": true
             },
-            "command": "make", // FOR MAC
-            // "command": "make", // FOR WINDOWS
+            // "command": "make", // FOR MAC
+            "command": "make", // FOR WINDOWS
         },
         {
             "label": "Build & run C++ project",
@@ -18,8 +18,8 @@
                 "kind": "test",
                 "isDefault": true
             },
-            "command": "make", // FOR MAC
-            // "command": "mingw32-make", // FOR WINDOWS
+            // "command": "make", // FOR MAC
+            "command": "mingw32-make", // FOR WINDOWS
             "args": [
                 "run"
             ]

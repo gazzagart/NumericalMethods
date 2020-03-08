@@ -8,11 +8,14 @@ double EulerMethodDiffs::EulersFunction()
 {
   // Works out how many times to run Euler's method.
   double length = endVal/h;
-  for (int i = 0; i < length; i++)
+  for (int i = 0; i <= length; i++)
   {
+    std::cout << "x: " << std::setprecision(10) << x  << std::endl;
+    std::cout << "y: " << std::setprecision(10) << y  << std::endl;
     y = nextY();
     x = x + h;
-    std::cout << std::setprecision(10) << y  << std::endl;
+    std::cout << "y': " << std::setprecision(10) << y  << std::endl;
+    std::cout << "y' * h: " << std::setprecision(10) << y * h  << std::endl;
   }
   return y;
 }

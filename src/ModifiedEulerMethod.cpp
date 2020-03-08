@@ -12,7 +12,7 @@ double ModifiedEulerMethod::modifiedEulersFunction()
 {
     // Works out how many times to run Euler's method.
     double length =  getEndVal()/getStep();
-    for (int i = 0; i < length; i++)
+    for (int i = 0; i <= length; i++)
     {
         y1 = nextY();
         x1 = getX() + getStep();
@@ -24,7 +24,7 @@ double ModifiedEulerMethod::modifiedEulersFunction()
         std::cout << "function: " << std::setprecision(10) << function( getX(),getY() ) << std::endl;
         std::cout << "function(x1,y1): " << std::setprecision(10) << function(x1,y1) << std::endl;
         std::cout << "yc: " << std::setprecision(10) << y1c  << std::endl;
-        setY(y1c);
+        setY(y1);
         setX(getX() + getStep());
     }
     return getY();
